@@ -4,7 +4,7 @@ EXECUTABLE = predictor
 all:	predictor
 
 predictor:	predictor.o predictorTable.o
-	g++ predictor.o predictorTable.o predictor.exe
+	g++ predictor.o predictorTable.o -o predictor.exe
 	
 predictor.o:	predictorTable.h predictor.cpp
 	g++ -c $(FLAGS) predictor.cpp -o predictor.o
