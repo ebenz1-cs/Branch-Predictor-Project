@@ -1,10 +1,10 @@
 FLAGS = -Wall -Wextra -g
-EXECUTABLE = predictor
+EXECUTABLE = predictors
 
 all:	predictor
 
 predictor:	predictor.o predictorTable.o
-	g++ predictor.o predictorTable.o -o predictor.exe
+	g++ predictor.o predictorTable.o -o predictors
 	
 predictor.o:	predictorTable.h predictor.cpp
 	g++ -c $(FLAGS) predictor.cpp -o predictor.o

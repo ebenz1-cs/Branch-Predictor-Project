@@ -124,13 +124,10 @@ void predictorTable::checkPredictorTable()
 	string behavior, line;
 
 	predictorEntry* tableArray;
-	int predictorOneState = 0, predictorTwoState = 0;
 	unsigned int entryIndex = 0, size = 0, x = 0;
 	int tableValue[7] = { 16, 32, 128, 256, 512, 1024, 2048 };
 	
 	int bimodalMispredict = 0;
-	int hit = 0;
-	int predictTaken = 0;
 
 	while (infile >> std::hex >> addr >> behavior >> std::hex >> targetAddr)
 	{
@@ -139,8 +136,6 @@ void predictorTable::checkPredictorTable()
 		while (x < 7)
 		{
 			bimodalMispredict = 0;
-			predictTaken = 0;
-			hit = 0;
 
 			tableArray = tablePointer[x];
 			size = tableValue[x];
@@ -221,13 +216,10 @@ void predictorTable::checkPredictorTable()
 				int GSMispredict = 0;
 				int GSState = 0;
 				predictorEntry* branchInstruction1;
-				predictorEntry* tableArray1;
 				
 
 				for (int i = 0; i < 9; i++) //Incrementing the GHR bits by 1 found in GHRSIZE[i]
 				{
-					//size 2048 entries must do the GSHARE predictor Logic here
-					tableArray1 = tablePointer[6];
 
 					entryIndex = (addr ^ GHR[i]) %size;		//PC XOR GHR MOD TABLESIZE
 
@@ -309,7 +301,7 @@ void predictorTable::checkPredictorTable()
 								++selectorCorrect;
 							else if (GSMispredict == 0 && bimodalMispredict == 1)
 							{
-								if (branchInstruction->selectorState = 2)
+								if (branchInstruction->selectorState == 2)
 									branchInstruction->selectorState = 1; //Move to strongly prefer GSHARE predictor
 
 								++selectorCorrect;

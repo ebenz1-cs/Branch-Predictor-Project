@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    /*
+    
     if (argc != 3)
     {
         std::cout << "Error: user must input 3 arguments, ending program now" << endl;
@@ -17,11 +17,11 @@ int main(int argc, char* argv[]) {
     }
     string inputFile = argv[1];
     string outputFile = argv[2];
-    */
+    
     std::ios::sync_with_stdio(false);
     //TEMPORARY REPLACE WHEN COMPILING IN UNIX
-    string inputFile = "short_trace1.txt";
-    string outputFile = "output.txt";
+    //string inputFile = "short_tra;
+    // string outputFile = "output.txt";
     
     predictorTable* bimodalPredictor = new predictorTable(inputFile);
     bimodalPredictor->fillPredictorTable(); //Fills up the predictor table using the input file name
